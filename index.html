@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+	<link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+	<title>Frontend Mentor | Results summary component</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk&display=swap" rel="stylesheet">
+	<!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		main {
+			background-color: white;
+			min-height: 100vh;
+			height: max-content;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+		}
+
+		#container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: center;
+			height: 70vh;
+			font-family: 'Hanken Grotesk', sans-serif;
+			width: 110vh;
+			margin: 0 10vh;
+		box-shadow: 0px 0px 50px hsl(221, 100%, 96%);
+		}
+
+		#container>div {
+			width: 45vh;
+			height: 100%;
+			padding: 3vh;
+		}
+
+		#result {
+			background-image: linear-gradient(hsl(252, 100%, 67%), hsl(241, 81%, 54%));
+			display: flex;
+			flex-direction: column;
+			align-content: space-evenly;
+			justify-content: center;
+			align-items: center;
+			color: white;
+			border-radius: 3vh;
+		}
+		#result>div{
+			margin: 2vh 3vh;
+			text-align: center;
+		}
+
+		#bubble {
+			background-image: linear-gradient(hsla(256, 72%, 46%, 1), hsla(241, 72%, 46%, 0));
+			padding: 4vh 8vh;
+			border-radius: 100%;
+			font-size: 3.6vh;
+			margin: 5vh 0;
+		}
+
+		#bubble p1 {
+			color: hsl(241, 100%, 89%);
+		}
+		
+		
+		#summary{
+			display: flex;
+			flex-direction: column;
+			align-content: space-around;
+			align-items: center;
+			justify-content: space-around;
+		}
+		#summary>div{
+			width: 100%;
+		}
+		#stats{
+			display: flex;
+			justify-content: space-around;
+			flex-direction: column;
+			height: 50%;
+		}
+		#stats>div{
+			display: flex;
+			justify-content: space-between;
+			padding: 2vh;
+			align-items: center;
+			margin: 0.7vh 0;
+			border-radius: 1.3vh;
+		}
+		.icon{
+			display: flex;
+		 font-size: 80%;
+		}
+		#stats>div{
+			color: hsl(224, 30%, 27%);
+		}
+		.icon img{
+			margin: 0 1vh;
+		}
+		#red{
+			background-color: hsla(0, 100%, 67%,0.2); 
+		}
+		#red .icon{
+			color: hsl(0, 100%, 67%);
+		}
+		#yellow{
+		background-color: hsla(39, 100%, 56%,0.2)
+		}
+		#yellow .icon{
+			color: hsl(39, 100%, 56%);
+		}
+		#green{
+			background-color: hsla(166, 100%, 37%,0.2)
+		}
+		#green .icon{
+			color: hsl(166, 100%, 37%);
+		}
+		#blue{
+			background-color: hsla(234, 85%, 45%,0.2);
+		}
+		#blue .icon{
+			color: hsl(234, 85%, 45%)
+		}
+		#stats span{
+			color: black;
+		}
+		
+		#button{
+			font-size: 75%;
+		text-align: center;
+		color: white;
+		background-color: hsl(224, 30%, 27%);
+		padding: 1.4vh;
+		border-radius: 4vh;
+		}
+		#button:hover{
+			background-color: hsl(241, 81%, 54%);
+		}
+	</style>
+</head>
+
+<body>
+	<main>
+		<div id="container">
+			<div id="result">
+				<div style="color: hsl(241, 100%, 89%); font-weight: 500">
+					<h1>Your Result</h1>
+				</div>
+				<div id="bubble">
+					<div>
+						<h1><span id="totalPercent"></span></h1><br>
+						<p1>of 100</p1>
+					</div>
+				</div>
+				<div>
+					<h2>Great</h2>
+				</div>
+				<div style="color: hsl(241, 100%, 89%)">
+					<p1>You scored higher than 65% of the people who have taken these tests.</p1>
+				</div>
+			</div>
+			<div id="summary">
+				<div style="font-size: 70%">
+					<h1>Summary</h1>
+				</div>
+				<div id="stats">
+					<div id="red">
+						<div class="icon"><img src="assets/images/icon-reaction.svg" alt="reaction">
+							<h2>Reaction</h2>
+						</div>
+						<div>
+							<h2><span id="reactionScore"></span> / 100</h2>
+						</div>
+					</div>
+					<div id="yellow">
+						<div class="icon"><img src="assets/images/icon-memory.svg" alt="memory">
+							<h2>Memory</h2>
+						</div>
+						<div>
+							<h2><span id="memoryScore"></span> / 100</h2>
+						</div>
+					</div>
+					<div id="green">
+						<div class="icon"><img src="assets/images/icon-verbal.svg" alt="verbal">
+							<h2>Verbal</h2>
+						</div>
+						<div>
+							<h2><span id="verbalScore"></span> / 100</h2>
+						</div>
+					</div>
+					<div id="blue">
+						<div class="icon"><img src="assets/images/icon-visual.svg" alt="visual">
+							<h2>Visual</h2>
+						</div>
+						<div>
+							<h2><span id="visualScore"></span> / 100</h2>
+						</div>
+					</div>
+				</div>
+				<div id="button">
+					<h1>Continue</h1>
+				</div>
+			</div>
+		</div>
+	</main>
+	<script>
+		let data;
+		fetch("./data.json").then((promise) => { return promise.json() }).then((json) => { data = json }).then(() => { viewStats() })
+
+		const totalSpan = document.querySelector("#totalPercent");
+		const reactionSpan = document.querySelector("#reactionScore");
+		const memorySpan = document.querySelector("#memoryScore");
+		const verbalSpan = document.querySelector("#verbalScore");
+		const visualSpan = document.querySelector("#visualScore");
+
+		function viewStats() {
+			let rcn = data[0]["score"];
+			let mmy = data[1]["score"];
+			let vbl = data[2]["score"];
+			let vsl = data[3]["score"];
+
+			let total = Math.floor((rcn + mmy + vbl + vsl) / 4);
+
+			totalSpan.innerHTML = total;
+			reactionSpan.innerHTML = rcn;
+			memorySpan.innerHTML = mmy;
+			verbalSpan.innerHTML = vbl;
+			visualSpan.innerHTML = vsl;
+		}
+	</script>
+</body>
+
+</html>
